@@ -1,9 +1,11 @@
-#ifndef MATRIX_
-#define MATRIX_
-
+// ***************************************************************************
 // Multiprocessors Final Project
 // 'matrix.hpp'
 // Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+// ***************************************************************************
+
+#ifndef MATRIX_
+#define MATRIX_
 
 #include <string>
 

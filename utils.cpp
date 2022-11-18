@@ -1,6 +1,8 @@
+// ***************************************************************************
 // Multiprocessors Final Project
 // 'utils.cpp'
 // Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+// ***************************************************************************
 
 #include <iostream>
 #include <numeric>
@@ -110,21 +112,21 @@ namespace matrix_utils {
         }
     }
 
-    void PrintResults(std::vector<double>& serial_times, std::vector<double>& parallel_threads_times, std::vector<double>& parallel_omp_times) {
+    void PrintResults(std::vector<double>& serial_times, std::vector<double>& parallel_omp_times, std::vector<double>& parallel_threads_times) {
         std::cout << "\n- Iteration  |  Serial Algorithm (ms)  |  Parallel OMP Algorithm (ms)  |  Parallel POSIX Threads Algorithm (ms)\n";
         std::cout << "---------------------------------------------------------------------------------------------------------------\n";
         for(size_t i = 0; i < serial_times.size(); ++i)
             std::cout << std::setw(1) << "-" << std::setw(6) << (i+1) << std::setw(7) << "|" << std::setw(13) << serial_times[i] << std::setw(13) << "|" << std::setw(16) << parallel_omp_times[i] << std::setw(16) << "|" << std::setw(20) << parallel_threads_times[i] << "\n";
         
         double avg_serial {std::accumulate(serial_times.begin(), serial_times.end(), 0.0) / serial_times.size()};
-        double avg_parallel_threads {std::accumulate(parallel_threads_times.begin(), parallel_threads_times.end(), 0.0) / parallel_threads_times.size()};
         double avg_parallel_omp {std::accumulate(parallel_omp_times.begin(), parallel_omp_times.end(), 0.0) / parallel_omp_times.size()};
+        double avg_parallel_threads {std::accumulate(parallel_threads_times.begin(), parallel_threads_times.end(), 0.0) / parallel_threads_times.size()};
 
         std::cout << "---------------------------------------------------------------------------------------------------------------\n";
         std::cout << std::setw(1) << "-  " << std::setw(6) << "Average" << std::setw(4) << "|" << std::setw(13) << avg_serial << std::setw(13) << "|" << std::setw(16) << avg_parallel_omp << std::setw(16) << "|" << std::setw(20) << avg_parallel_threads << "\n";
 
-        double performance_increase_parallel_threads {((avg_serial - avg_parallel_threads) / avg_serial) * 100.0};
         double performance_increase_parallel_omp {((avg_serial - avg_parallel_omp) / avg_serial) * 100.0};
+        double performance_increase_parallel_threads {((avg_serial - avg_parallel_threads) / avg_serial) * 100.0};
 
         std::cout << "---------------------------------------------------------------------------------------------------------------\n";
         std::cout << std::fixed;

@@ -1,6 +1,8 @@
+// ***************************************************************************
 // Multiprocessors Final Project
 // 'algorithms.hpp'
 // Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+// ***************************************************************************
 
 #include <iostream>
 #include <sstream>
@@ -63,8 +65,6 @@ namespace algorithms {
 
     void ParallelPOSIXThreadsAlgorithm(matrix_utils::Matrix& matrix_A, matrix_utils::Matrix& matrix_B, matrix_utils::Matrix& matrix_parallel_threads, std::vector<double>& times) {
 
-        auto start = std::chrono::high_resolution_clock::now();
-
         int number_elements = matrix_parallel_threads.GetNumberRows() * matrix_parallel_threads.GetNumberColumns();
 
         std::vector<std::thread> threads;
@@ -72,6 +72,8 @@ namespace algorithms {
         int current_number_threads = number_threads;
         if((number_elements) < current_number_threads)
             current_number_threads = number_elements;
+
+        auto start = std::chrono::high_resolution_clock::now();
 
         for(int thread_number = 0; thread_number < current_number_threads; ++thread_number)
             threads.push_back(std::thread(POSIXThreadWorker, thread_number, number_elements, current_number_threads, matrix_A, matrix_B, matrix_parallel_threads));
@@ -94,7 +96,6 @@ namespace algorithms {
                 *(matrix_ptr) = current_multiplication;
                 matrix_ptr++;
             }
-
         }
         
         for(auto& thread : threads)

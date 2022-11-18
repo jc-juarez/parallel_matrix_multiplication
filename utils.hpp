@@ -1,9 +1,11 @@
-#ifndef UTILS_
-#define UTILS_
-
+// ***************************************************************************
 // Multiprocessors Final Project
 // 'utils.hpp'
 // Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+// ***************************************************************************
+
+#ifndef UTILS_
+#define UTILS_
 
 #include <vector>
 #include "matrix.hpp"

@@ -1,9 +1,11 @@
-#ifndef ALGORITHMS_
-#define ALGORITHMS_
-
+// ***************************************************************************
 // Multiprocessors Final Project
 // 'algorithms.hpp'
 // Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+// ***************************************************************************
+
+#ifndef ALGORITHMS_
+#define ALGORITHMS_
 
 #include <vector>
 #include "matrix.hpp"

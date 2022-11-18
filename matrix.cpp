@@ -1,6 +1,8 @@
+// ***************************************************************************
 // Multiprocessors Final Project
 // 'matrix.cpp'
 // Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+// ***************************************************************************
 
 #include <string>
 #include "matrix.hpp"
