@@ -1,6 +1,6 @@
 # Parallel Matrix Multiplication Algorithms ⚡
 
-Parallel and Serial Algorithms for matrix multiplication implemented in **C++ for GNU/Linux**. To run this program first clone the repository:
+Parallel and Serial Algorithms for matrix multiplication implemented in **C++ for GNU/Linux**. This implementation executes a serial algorithm along with two parallel algorithms: OpenMP and POSIX Threads. To run this program first clone the repository:
 
 ```bash
 git clone https://github.com/jc-juarez/parallel_matrix_multiplication
