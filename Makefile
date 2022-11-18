@@ -1,3 +1,9 @@
+# ***************************************************************************
+# Multiprocessors Final Project
+# 'Makefile'
+# Authors: Juan Carlos Juarez. A00824524 / Marisa Jacqueline Diaz. A01172917.
+# ***************************************************************************
+
 output: main.o matrix.o utils.o algorithms.o
 	g++ main.o matrix.o utils.o algorithms.o -o output -fopenmp -pthread
 	rm *.o
