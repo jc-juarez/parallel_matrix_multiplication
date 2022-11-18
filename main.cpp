@@ -88,9 +88,16 @@ int main() {
     for(int i = 0; i < algorithms::number_iterations; ++i)
         algorithms::ParallelOMPAlgorithm(matrix_A, matrix_B, matrix_parallel_omp, parallel_omp_times);
 
+    // Parallel POSIX Threads matrix multiplication
+    for(int i = 0; i < algorithms::number_iterations; ++i)
+        algorithms::ParallelPOSIXThreadsAlgorithm(matrix_A, matrix_B, matrix_parallel_threads, parallel_threads_times);
+
     // Print out to console if parallel matrices are equal to serial matrix
     std::cout << "<> Matrix '" << matrix_serial.GetName() << "' and Matrix '" << matrix_parallel_omp.GetName() << "' are ";
     if(matrix_utils::MatricesAreEqual(matrix_serial, matrix_parallel_omp)) std::cout << "Equal.\n";
+    else std::cout << "Different.\n";
+    std::cout << "<> Matrix '" << matrix_serial.GetName() << "' and Matrix '" << matrix_parallel_threads.GetName() << "' are ";
+    if(matrix_utils::MatricesAreEqual(matrix_serial, matrix_parallel_threads)) std::cout << "Equal.\n";
     else std::cout << "Different.\n";
 
     // Results Table printing
