@@ -77,27 +77,17 @@ namespace algorithms {
 
         auto start = std::chrono::high_resolution_clock::now();
 
-        for(int thread_number = 0; thread_number < current_number_threads; ++thread_number)
-            threads.push_back(std::thread(POSIXThreadWorker, thread_number, number_elements, current_number_threads, matrix_A, matrix_B, matrix_parallel_threads));
+        for(int thread_number = 0; thread_number < current_number_threads; ++thread_number) {
+            int start = thread_number * (number_elements / current_number_threads);
+            int stop = start + (number_elements / current_number_threads);
+            threads.push_back(std::thread(POSIXThreadWorker, start, stop, matrix_A, matrix_B, matrix_parallel_threads));
+        }
 
         // Serial leftover
         if(number_elements %  current_number_threads) {
             int start = number_elements - (number_elements %  current_number_threads);
             int stop = start + (number_elements %  current_number_threads);
-
-            double* matrix_ptr = (matrix_parallel_threads.GetMatrix() + start);
-            double current_multiplication {};
-
-            for(int matrix_index = start; matrix_index < stop; ++matrix_index) {
-                int j = matrix_index - ((matrix_index / matrix_B.GetNumberColumns()) * matrix_B.GetNumberColumns());
-                int i = (matrix_index - j) / matrix_B.GetNumberColumns();
-                current_multiplication = 0.0;
-                for(int k = 0; k < matrix_A.GetNumberColumns(); ++k) {
-                    current_multiplication += *(matrix_A.GetMatrix() + (i * matrix_A.GetNumberColumns()) + k) * *(matrix_B.GetMatrix() + (j * matrix_B.GetNumberRows()) + k);
-                } 
-                *(matrix_ptr) = current_multiplication;
-                matrix_ptr++;
-            }
+            POSIXThreadWorker(start, stop, matrix_A, matrix_B, matrix_parallel_threads);
         }
         
         for(auto& thread : threads)
@@ -111,10 +101,7 @@ namespace algorithms {
         times.push_back(ellapsed_time);
     }
 
-    void POSIXThreadWorker(int thread_number, int number_elements, int number_threads, matrix_utils::Matrix matrix_A, matrix_utils::Matrix matrix_B, matrix_utils::Matrix matrix_parallel_threads) {
-
-        int start = thread_number * (number_elements / number_threads);
-        int stop = start + (number_elements / number_threads);
+    void POSIXThreadWorker(int start, int stop, matrix_utils::Matrix matrix_A, matrix_utils::Matrix matrix_B, matrix_utils::Matrix matrix_parallel_threads) {
 
         for(int matrix_index = start; matrix_index < stop; ++matrix_index) {
             int j = matrix_index - ((matrix_index / matrix_B.GetNumberColumns()) * matrix_B.GetNumberColumns());

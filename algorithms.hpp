@@ -18,7 +18,7 @@ namespace algorithms {
     void SerialAlgorithm(matrix_utils::Matrix&, matrix_utils::Matrix&, matrix_utils::Matrix&, std::vector<double>&);
     void ParallelOMPAlgorithm(matrix_utils::Matrix&, matrix_utils::Matrix&, matrix_utils::Matrix&, std::vector<double>&);
     void ParallelPOSIXThreadsAlgorithm(matrix_utils::Matrix&, matrix_utils::Matrix&, matrix_utils::Matrix&, std::vector<double>&);
-    void POSIXThreadWorker(int, int, int, matrix_utils::Matrix, matrix_utils::Matrix, matrix_utils::Matrix);
+    void POSIXThreadWorker(int, int, matrix_utils::Matrix, matrix_utils::Matrix, matrix_utils::Matrix);
 
 }
 
