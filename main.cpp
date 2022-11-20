@@ -85,6 +85,13 @@ int main() {
     // Serial algorithm matrix file writing
     matrix_utils::WriteToFile(matrix_serial);
 
+    // Parallel algorithms number of threads designation
+    int number_elements = matrix_serial.GetNumberRows() * matrix_serial.GetNumberColumns();
+    int current_number_threads = algorithms::number_threads;
+    if((number_elements) < current_number_threads)
+        current_number_threads = number_elements;
+    std::cout << "< Parallel algorithms running on " << current_number_threads << " threads >\n\n";
+
     // Parallel OpenMP algorithm matrix multiplication
     for(int i = 0; i < algorithms::number_iterations; ++i)
         algorithms::ParallelOMPAlgorithm(matrix_A, matrix_B, matrix_parallel_omp, parallel_omp_times);
