@@ -1,6 +1,6 @@
 # Parallel Matrix Multiplication Algorithms ⚡
 
-Parallel and Serial Algorithms for matrix multiplication implemented in **C++ for GNU/Linux**. This implementation executes a serial algorithm along with two parallel algorithms: OpenMP and POSIX Threads.
+Parallel and Serial Algorithms for matrix multiplication implemented in **C++ for GNU/Linux**. This implementation executes a serial algorithm along with two parallel algorithms: OpenMP and POSIX Threads. The file 'matrixA.txt' contains a matrix of 1000x10 and the file 'matrixB.txt' contains a matrix of 10x1000.
 
 To run this first make sure you have OpenMP installed. You can install it on Debian-based distributions with the following command:
 
