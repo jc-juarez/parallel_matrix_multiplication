@@ -158,6 +158,8 @@ namespace matrix_utils {
 
     bool MatricesAreEqual(Matrix& matrix_1, Matrix& matrix_2) {
         
+        if((matrix_1.GetNumberRows() * matrix_1.GetNumberColumns()) != (matrix_2.GetNumberRows() * matrix_2.GetNumberColumns())) return false;
+
         double* ptr_matrix_1 = matrix_1.GetMatrix();
         double* ptr_matrix_2 = matrix_2.GetMatrix();
 
