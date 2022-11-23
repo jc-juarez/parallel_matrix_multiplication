@@ -21,4 +21,4 @@ algorithms.o: algorithms.cpp algorithms.hpp
 	g++ -c algorithms.cpp -fopenmp -pthread
 
 clean:
-	rm *.o output
+	rm output

@@ -2,13 +2,19 @@
 
 Parallel and Serial Algorithms for matrix multiplication implemented in **C++ for GNU/Linux**. This implementation executes a serial algorithm along with two parallel algorithms: OpenMP and POSIX Threads. Both matrices of the .txt files contained within the repository have a total of 1,048,576 elements.
 
-To run this first make sure you have OpenMP installed. You can install it on Debian-based distributions with the following command:
+The default number of threads to be used by the parallel algorithms is 64. You can customize the number of threads to be used inside the **algorithms.hpp** file:
+
+```cpp
+constexpr int number_threads {64};
+```
+
+To run this program first make sure you have OpenMP installed. You can install it on Debian-based distributions with the following command:
 
 ```bash
 sudo apt install libomp-dev
 ```
 
-Then clone the repository:
+Now clone the repository:
 
 ```bash
 git clone https://github.com/jc-juarez/parallel_matrix_multiplication
