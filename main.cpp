@@ -110,6 +110,14 @@ int main() {
 
     // Results Table printing
     matrix_utils::PrintResults(serial_times, parallel_omp_times, parallel_threads_times);
+    
+    
+    // Free matrices
+    matrix_A.FreeMatrix();
+    matrix_B.FreeMatrix();
+    matrix_serial.FreeMatrix();
+    matrix_parallel_omp.FreeMatrix();
+    matrix_parallel_threads.FreeMatrix();
 
     return 0;
 }
